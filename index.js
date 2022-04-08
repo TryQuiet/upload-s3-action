@@ -56,7 +56,7 @@ function run() {
       console.log('paths.map1')
       const fileStream = fs.createReadStream(p);
       console.log('paths.map2')
-      const bucketPath = path.join(destinationDir, path.relative(sourceDir, p));
+      const bucketPath = path.join(destinationDir);
       console.log('paths.map3')
       const params = {
         Bucket: BUCKET,
