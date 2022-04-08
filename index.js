@@ -33,11 +33,11 @@ let paths = [SOURCE_DIR]
 
 const isDir = fs.lstat(SOURCE_DIR).isDirectory()
 
-if (isDir) {
-  paths = klawSync(SOURCE_DIR, {
-    nodir: true
-  });
-}
+// if (isDir) {
+//   paths = klawSync(SOURCE_DIR, {
+//     nodir: true
+//   });
+// }
 console.log('klawSyncAfter')
 
 function upload(params) {
