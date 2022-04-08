@@ -2514,15 +2514,14 @@ function run() {
       console.log('paths.map1')
       const fileStream = fs.createReadStream(p);
       console.log('paths.map2')
-      const bucketPath = path.join(destinationDir);
       console.log('paths.map3')
-
+      const bucketPath = path.join(destinationDir, path.relative(sourceDir, p));
       console.log('pushing to dir ')
       const params = {
         Bucket: BUCKET,
         ACL: 'public-read',
         Body: fileStream,
-        Key: '',
+        Key: bucketPath,
         ContentType: lookup(p) || 'text/plain'
       };
       return upload(params);
