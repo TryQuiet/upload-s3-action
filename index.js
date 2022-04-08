@@ -26,10 +26,12 @@ const s3 = new S3({
   accessKeyId: AWS_KEY_ID,
   secretAccessKey: SECRET_ACCESS_KEY
 });
+console.log('klawSyncBefore')
 const destinationDir = DESTINATION_DIR === '/' ? shortid() : DESTINATION_DIR;
 const paths = klawSync(SOURCE_DIR, {
   nodir: true
 });
+console.log('klawSyncAfter')
 
 function upload(params) {
   return new Promise(resolve => {
@@ -46,8 +48,11 @@ function run() {
   const sourceDir = path.join(process.cwd(), SOURCE_DIR);
   return Promise.all(
     paths.map(p => {
+      console.log('paths.map1')
       const fileStream = fs.createReadStream(p.path);
+      console.log('paths.map2')
       const bucketPath = path.join(destinationDir, path.relative(sourceDir, p.path));
+      console.log('paths.map3')
       const params = {
         Bucket: BUCKET,
         ACL: 'public-read',
