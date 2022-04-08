@@ -2516,6 +2516,8 @@ function run() {
       console.log('paths.map2')
       console.log('paths.map3')
       const bucketPath = path.join(destinationDir, path.relative(sourceDir, p));
+      console.log('path relative', path.relative(sourceDir, p))
+      console.log(bucketPath)
       console.log('pushing to dir ')
       const params = {
         Bucket: BUCKET,
