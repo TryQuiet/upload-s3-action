@@ -54,16 +54,16 @@ function run() {
   return Promise.all(
     paths.map(p => {
       console.log('paths.map1')
-      const fileStream = fs.createReadStream(p.path);
+      const fileStream = fs.createReadStream(p);
       console.log('paths.map2')
-      const bucketPath = path.join(destinationDir, path.relative(sourceDir, p.path));
+      const bucketPath = path.join(destinationDir, path.relative(sourceDir, p));
       console.log('paths.map3')
       const params = {
         Bucket: BUCKET,
         ACL: 'public-read',
         Body: fileStream,
         Key: bucketPath,
-        ContentType: lookup(p.path) || 'text/plain'
+        ContentType: lookup(p) || 'text/plain'
       };
       return upload(params);
     })
