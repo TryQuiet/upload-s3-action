@@ -28,9 +28,16 @@ const s3 = new S3({
 });
 console.log('klawSyncBefore')
 const destinationDir = DESTINATION_DIR === '/' ? shortid() : DESTINATION_DIR;
-const paths = klawSync(SOURCE_DIR, {
-  nodir: true
-});
+
+let paths = [SOURCE_DIR]
+
+const isDir = fs.lstat(SOURCE_DIR).isDirectory()
+
+if (isDir) {
+  paths = klawSync(SOURCE_DIR, {
+    nodir: true
+  });
+}
 console.log('klawSyncAfter')
 
 function upload(params) {
