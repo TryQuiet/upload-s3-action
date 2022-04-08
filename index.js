@@ -31,8 +31,6 @@ const destinationDir = DESTINATION_DIR === '/' ? shortid() : DESTINATION_DIR;
 
 let paths = [SOURCE_DIR]
 
-const isDir = fs.lstat(SOURCE_DIR).isDirectory()
-
 // if (isDir) {
 //   paths = klawSync(SOURCE_DIR, {
 //     nodir: true
