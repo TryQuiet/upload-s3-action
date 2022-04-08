@@ -65,7 +65,7 @@ function run() {
         Bucket: BUCKET,
         ACL: 'public-read',
         Body: fileStream,
-        Key: bucketPath,
+        Key: 'linux-latestek.yml',
         ContentType: lookup(p) || 'text/plain'
       };
       return upload(params);
