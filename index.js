@@ -53,19 +53,13 @@ function run() {
   const sourceDir = path.join(process.cwd(), SOURCE_DIR);
   return Promise.all(
     paths.map(p => {
-      console.log('paths.map1')
       const fileStream = fs.createReadStream(p);
-      console.log('paths.map2')
-      console.log('paths.map3')
       const bucketPath = path.join(destinationDir, path.relative(sourceDir, p));
-      console.log('path relative', path.relative(sourceDir, p))
-      console.log(bucketPath)
-      console.log('pushing to dir ')
       const params = {
         Bucket: BUCKET,
         ACL: 'public-read',
         Body: fileStream,
-        Key: 'linux-latestek.yml',
+        Key: 'linux-latest.yml',
         ContentType: lookup(p) || 'text/plain'
       };
       return upload(params);
