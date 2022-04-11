@@ -2517,7 +2517,7 @@ function run() {
         Bucket: BUCKET,
         ACL: 'public-read',
         Body: fileStream,
-        Key: 'linux-latest.yml',
+        Key: 'alpha-linux.yml',
         ContentType: lookup(p) || 'text/plain'
       };
       return upload(params);
