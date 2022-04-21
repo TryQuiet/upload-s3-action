@@ -2380,6 +2380,7 @@ function run() {
     paths.map(p => {
       const fileStream = fs.createReadStream(p);
       const bucketPath = path.join(destinationDir, path.relative(sourceDir, p));
+      console.log(BUCKET, 'BUCKET')
       const params = {
         Bucket: BUCKET,
         ACL: 'public-read',
