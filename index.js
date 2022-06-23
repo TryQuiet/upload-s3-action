@@ -48,11 +48,13 @@ function run() {
       const fileStream = fs.createReadStream(p);
       const bucketPath = path.join(destinationDir, path.relative(sourceDir, p));
       console.log(BUCKET, 'BUCKET')
+      const key = p.split('/').pop()
+      console.log('key', key)
       const params = {
         Bucket: BUCKET,
         ACL: 'public-read',
         Body: fileStream,
-        Key: 'alpha-linux.yml',
+        Key: key,
         ContentType: lookup(p) || 'text/plain'
       };
       return upload(params);
